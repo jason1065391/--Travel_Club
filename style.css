@@ -1,0 +1,545 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {box-sizing: border-box}
+body {font-family: Verdana, sans-serif; margin:0;background: #213555;}
+.mySlides {display: none}
+img {vertical-align: middle;}
+
+
+/*********************** header *********************************/
+
+header{
+    background-color: #213555; /* 设置背景颜色 */
+    z-index: 100;
+}
+
+.nav{
+    top: 0;
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    height: 65px;
+    line-height: 100px;
+    background-color: transparent; /* 将背景颜色设为透明，或者根据需求设定其他颜色 */
+    z-index: 100; /* 将 .nav 的 z-index 设置为比 header 小一点，确保 header 在 .nav 上方 */
+}
+.nav-logo{
+    margin: -10px 25px auto 0;
+}
+
+.nav-logo p{
+    color: white;
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.nav-menu ul{
+    display: flex;
+}
+
+.nav-menu ul li{
+    list-style-type: none;
+}
+
+.nav-menu ul li .link{
+    text-decoration: none;
+    font-weight: 500;
+    color: white;
+    padding-bottom: 15px;
+    margin: 0 25px;
+}
+
+.link:hover , .active_home{
+    border-bottom: 2px solid white;
+}
+
+.nav-button .btn{
+    width: 130px;
+    height: 40px;
+    font-weight: 500;
+    background: rgba(255,255,255,0.4);
+    border: none;
+    border-radius:30px ;
+    cursor: pointer;
+    transition:  .3s ease;
+}
+
+.nav-menu-btn {
+    z-index: 99;
+}
+
+.btn.white-btn:hover, .btn:hover {
+    background: rgb(255,255,255,0.5);
+}
+
+#registerBtn{
+    margin-left: 15px;
+}
+
+.btn.white-btn{
+    background: rgb(255,255,255,0.7);
+}
+
+br {
+    background-color: transparent;
+}
+
+/*********************** banner  *********************************/
+
+
+.banner {
+    position: relative;
+    max-width: 94%;
+    margin: 80px auto 8px auto;
+}
+
+/* Slide image */
+.slide-image {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    height: 500px;
+}
+
+
+/* The dots/bullets/indicators */
+.dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 3px 20px 0;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+    background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+
+@keyframes fade {
+    from {opacity: .4} 
+    to {opacity: 1}
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+    .prev, .next, .text {font-size: 11px}
+}
+
+.banner_1th {
+    position: absolute;
+    top: 50%;
+    right: 3%;
+    width: 25%;
+    background-color: rgba(116, 116, 116, 0.4);
+    transform: translateY(-50%);
+    box-sizing: border-box;
+}
+
+.search-section {
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.search-section h2 {
+    margin-bottom: 20px;
+}
+
+
+
+.date-container {
+    display: flex;
+    flex-direction: column;
+    width: 48%;
+}
+
+.search-section label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+
+
+#destination,#group-size ,#travel-type {
+    width: 90%;
+    padding: 10px 10px;
+    font-size: 16px;
+    margin-bottom: 8px;
+    border-radius: 10px;
+    border: none; 
+    box-sizing: border-box;
+    background: rgba(255, 255, 255, 0.725);
+    color: black;
+}
+
+input[type="date"]{
+    width: 100%;
+    padding: 10px 10px;
+    margin-bottom: 8px;
+    border-radius: 10px;
+    border: none; 
+    box-sizing: border-box;
+    background: rgba(255, 255, 255, 0.725);
+    color: black;
+    font-size:12px;
+}
+
+.travel_date {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    margin-bottom: 8px;
+}
+
+.budget-slider {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.budget-slider input {
+    width: 100%;
+}
+
+.search-section button {
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.search-section button:hover {
+    background-color: #0056b3;
+}
+
+ /*************************** container **************************/
+
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 8px;
+    margin-top: 20px;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: #F5EFE7;
+}
+
+.home_block_01{
+    width: 100%;
+}
+
+.country{
+    width: 40%;
+}
+
+.country button{
+    padding: 10px;
+    margin-left: 20px;
+    font-size: 18px;
+    background: #b1cbfa;
+    border: none;
+    border-radius: 10px;
+    color: black;
+}
+
+
+/* ****************** country_photo **************** */
+
+/* Center website */
+.country_photo {
+    width: 90%;
+    margin: auto;
+  }
+  
+
+  .row {
+    margin: 10px -16px;
+  }
+  
+  /* Add padding BETWEEN each column */
+  .row,
+  .row > .column {
+    padding: 5px;
+  }
+  
+  /* Create three equal columns that floats next to each other */
+  .column {
+    float: left;
+    width: 25%; /*4欄*/
+    display: none; /* Hide all elements by default */
+  }
+  
+  /* Clear floats after rows */ 
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  
+  /* Content */
+  .content {
+    background-color: white;
+    padding: 10px;
+  }
+  
+  /* The "show" class is added to the filtered elements */
+  .show {
+    display: block;
+  }
+  
+  /* Style the buttons */
+  .btn {
+    border: none;
+    outline: none;
+    padding: 12px 16px;
+    background-color: white;
+    cursor: pointer;
+  }
+  
+  .btn:hover {
+    background-color: #ddd;
+  }
+  
+  .btn.active {
+    background-color: #666;
+    color: white;
+  }
+
+
+
+/* *************************************** */
+.content button{
+    background: rgba(201, 199, 199, 0.641);
+    border-radius: 10px;
+    border: none;
+}
+
+.content button:hover ,.content button:focus{
+    border: none;
+    background: #213555;
+    color: white;
+}
+
+/******************************** 彈窗 ****************************/
+
+.popup-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+  }
+  
+  .popup {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  }
+
+/************************ car ******************************/
+
+.cart-icon {
+    position: fixed;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    background-color: #4f6fc0;
+    color: white;
+    padding: 5px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 999;
+    display: none; /* 初始隐藏 */
+    align-items: center;
+    transition: width 0.3s, height 0.3s; /* 添加过渡效果 */
+    justify-content: center; /* 添加这行以确保图标在圆形背景中居中显示 */
+}
+
+
+  
+.cart-icon:hover {
+    font-size: 35px; /* 图标放大的大小 */
+}
+
+
+/* *************************************** */
+
+.home_block_02{
+    width: 85%; /* 設置容器寬度 */
+    margin: 40px auto;
+}
+
+  
+  .image-container {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .image-list {
+    display: flex;
+    flex-wrap: nowrap;
+    transition: transform 0.5s ease-in-out;
+  }
+  
+  .image-list img {
+    width: 300px; /* 設置照片寬度 */
+    height: 250px; /* 設置照片高度 */
+    margin: 10px;
+  }
+  
+  .prev-btn,.next-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+  }
+  
+  .prev-btn {
+    left: 10px;
+  }
+  
+  .next-btn {
+    right: 10px;
+  }
+
+  .home_block_02 .image-container {
+    display: flex;
+    overflow: hidden;
+    padding: 0 10px;
+}
+
+
+
+/* *************************************************** */
+.section {
+    margin-bottom: 40px;
+}
+
+.section-2 .row {
+    display: flex;
+    gap: 10px;
+}
+.section-2 .row div {
+    flex: 1;
+    background-color: #f0f0f0;
+    text-align: center;
+    padding: 10px;
+}
+.section-2 .row:nth-child(1) div:nth-child(3) {
+    flex: 2;
+}
+.section-2 .row img {
+    max-width: 100%;
+    height: auto;
+}
+/************************ footer ******************************/
+
+
+footer{
+    padding: 50px 30px;
+    background-color: #4F709C;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+footer *{
+    color:white;
+}
+
+
+.social_media {
+    width: 20%;
+}
+
+.social_media .social-icon a i {
+    font-size: 24px; /* 設置圖標大小為 24 像素 */
+    padding: 15px;
+}
+
+.sitemap {
+    width: 15%;
+}
+
+.sitemap nav ul li {
+    list-style: none;
+}
+
+.sitemap nav ul li a {
+    display: block;
+    text-decoration: none;
+    padding: 5px;
+}
+
+.hot_place{
+    width: 65%;
+}
+
+.hot_place nav ul {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 將內容分成四列 */
+    gap: 10px; /* 列之間的間距 */
+}
+
+.hot_place nav ul li {
+    list-style: none;
+}
+
+.hot_place nav ul li a {
+    display: block;
+    text-decoration: none;
+    padding: 5px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+
+.information{
+    width: 100%;
+}
+
+.subscription form button[type="submit"] {
+    opacity: 0.7; /* 设置按钮为半透明 */
+    background-color: rgba(0, 0, 0, 0.5); /* 设置按钮背景颜色为半透明黑色 */
+    border: none;
+    border-radius: 30px; /* 设置按钮的圆角 */
+    padding: 10px 20px; /* 设置按钮的内边距 */
+    color: white; /* 设置按钮文字颜色 */
+    cursor: pointer; /* 设置鼠标悬停样式为手型 */
+}
+
+.subscription form input[type="email"] {
+    width: 300px; /* 设置输入框的宽度 */
+    border-radius: 10px; /* 设置输入框的圆角 */
+    padding: 10px; /* 设置输入框的内边距 */
+    border: 1px solid #ccc; /* 设置输入框的边框 */
+    outline: none; /* 去除输入框的默认轮廓样式 */
+    color: black;
+}
+
+.subscription form input[type="email"]:focus {
+    border-color: #4F709C; /* 设置输入框获取焦点时的边框颜色 */
+}

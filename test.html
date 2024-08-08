@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+  <input type="button" class="btnClass" value="點擊並顯示">
+
+  <h2>探索你的下一个冒險</h2>
+  <label for="destination">目的地：</label>
+  <select id="destination" name="destination">
+      <option value="1">台灣</option>
+      <option value="2">日本</option>
+      <option value="3">泰國</option>
+      <option value="4">歐洲</option>
+      <option value="5">美國</option>
+  </select>
+
+  <label for="group-size">冒險人數</label>
+  <select id="group-size" name="group-size">
+      <option value="1">1人</option>
+      <option value="2">2人</option>
+      <option value="3">3人</option>
+      <option value="4">4人</option>
+      <option value="5">5人</option>
+      <option value="6">5+人</option>
+  </select>
+
+  <label for="travel-type">旅行類型：</label>
+  <select id="travel-type" name="travel-type">
+      <option value="">選擇主题</option>
+      <option value="city-exploration">城市探索</option>
+      <option value="culinary-journey">美食之旅</option>
+      <option value="outdoor-adventure">戶外探險</option>
+      <option value="cultural-immersion">文化體驗</option>
+  </select>
+  
+  <script>
+    var btn = document.querySelector('.btnClass');
+
+      // 定義 saveAndCall 函數
+    function saveAndCall(e){
+      // 取得目的地選擇的文字
+      var place = document.querySelector('#destination').options[document.querySelector('#destination').selectedIndex].textContent;
+      // 取得冒險人數選擇的文字
+      var groupSize = document.querySelector('#group-size').options[document.querySelector('#group-size').selectedIndex].textContent;
+      // 將目的地和冒險人數儲存到localStorage
+      var place = document.querySelector('#travel-type').options[document.querySelector('#travel-type').selectedIndex].textContent;
+      localStorage.setItem('place', place);
+      localStorage.setItem('groupSize', groupSize);
+      // 顯示儲存的結果
+      alert('旅遊地點: ' + place + '\n' + '冒險人數: ' + groupSize);
+    }
+
+    // 將 saveAndCall 函數綁定到按鈕的點擊事件
+    btn.addEventListener('click', saveAndCall)
+  </script>
+</body>
+</html>

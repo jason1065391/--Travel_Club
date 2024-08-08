@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+
+    <!--------------------------------- header ------------------------------------------>
+
+    <header>
+        <nav class="nav">
+            <div class="nav-logo">
+                <p>Travel_Club</p>
+            </div>
+            <div class="nav-menu" id="navMenu">
+                <ul>
+                    <li><a href="./home.html" class="link">HOME</a></li>
+                    <li><a href="./blog.html" class="link">BLOG</a></li>
+                    <li><a href="./services.html" class="link">SERVICES</a></li>
+                    <li><a href="./about.html" class="link">ABOUT</a></li>
+                </ul>
+            </div>
+            <div class="nav-button">
+                <button class="btn white-btn" id="loginBtn" onclick="login()">Sign In</button>
+                <button class="btn" id="registerBtn" onclick="register()">Sign Up</button>
+            </div>
+        </nav>
+    </header>
+
+    <script>
+        function login() {
+            window.location.href = './login.html';
+        }
+
+        function register() {
+            window.location.href = './login.html';
+        }
+
+    </script>
+
+
+
+    <!--------------------------------- banner ------------------------------------------>
+        
+    <div class="banner">
+
+        <div class="mySlides fade">
+            <img src="./imgs/banner_1350_550/banner_7.jpg" class="slide-image">
+        </div>
+        
+        <div class="mySlides fade">
+            <img src="./imgs/banner_1350_550/banner_5.jpg" class="slide-image">
+        </div>
+        
+        <div class="mySlides fade">
+            <img src="./imgs/banner_1350_550/banner_6.jpg" class="slide-image">
+        </div>
+    
+        <div class="mySlides fade">
+            <img src="./imgs/banner_1350_550/picture_4.jpg" class="slide-image">
+        </div>
+    
+        <div class="mySlides fade">
+            <img src="./imgs/banner_1350_550/ski_05.jpg" class="slide-image">
+        </div>
+        
+
+        <div class="banner_1th">
+            <div class="search-section">
+
+                <h2>探索你的下一个冒險</h2>
+                <label for="destination">目的地：</label>
+                <select id="destination" name="destination">
+                    <option value="1">台灣</option>
+                    <option value="2">日本</option>
+                    <option value="3">泰國</option>
+                    <option value="4">歐洲</option>
+                    <option value="5">美國</option>
+                </select>
+
+
+                <label for="group-size">冒險人數</label>
+                <select id="group-size" name="group-size">
+                    <option value="1">1人</option>
+                    <option value="2">2人</option>
+                    <option value="3">3人</option>
+                    <option value="4">4人</option>
+                    <option value="5">5人</option>
+                    <option value="6">5+人</option>
+                </select>
+                
+
+                <label for="travel-type">旅行類型：</label>
+                <select id="travel-type" name="travel-type">
+                    <option value="">選擇主题</option>
+                    <option value="city-exploration">城市探索</option>
+                    <option value="culinary-journey">美食之旅</option>
+                    <option value="outdoor-adventure">戶外探險</option>
+                    <option value="cultural-immersion">文化體驗</option>
+                </select>
+    
+                <div class="travel_date">
+                    <div class="date-container">
+                        <label for="start-date">出發日期：</label>
+                        <input type="date" id="start-date" name="start-date">
+                    </div>
+                    <div class="date-container">
+                        <label for="end-date">結束日期：</label>
+                        <input type="date" id="end-date" name="end-date">
+                    </div>
+                </div>
+                
+                <!-- 预算范围选择字段 -->
+                <div class="search-field">
+                    <label for="budget">預算範圍</label>
+                    <span id="budget-value">5000</span> 元 <!-- 预算值 -->
+                    <input type="range" id="budget" name="budget" min="1000" max="300000" step="500"> <!-- 滑块 -->
+                </div>
+                
+                <script>
+                // 实时更新预算范围的值
+                    document.getElementById('budget').addEventListener('input', function() {
+                        document.getElementById('budget-value').textContent = this.value;
+                    });
+        
+        
+        
+                </script>
+    
+                <button type="button" id="search">搜尋</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 彈窗 -->
+
+    <div id="popup" class="popup-container">
+        <div class="popup">
+            <h2>搜尋結果</h2>
+            <p>這是一個簡單的彈窗。</p>
+            <button id="close-button">關閉彈窗</button>
+        </div>
+    </div>
+    
+    <br>
+    
+    <div style="text-align:center">
+        <span class="dot" onclick="currentSlide(1)"></span> 
+        <span class="dot" onclick="currentSlide(2)"></span> 
+        <span class="dot" onclick="currentSlide(3)"></span> 
+        <span class="dot" onclick="currentSlide(4)"></span>
+        <span class="dot" onclick="currentSlide(5)"></span>
+    </div>
+    
+    <script>
+        let slideIndex = 1;
+        showSlides(slideIndex);
+        
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+        
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+        
+        function showSlides(n) {
+            let i;
+            let slides = document.getElementsByClassName("mySlides");
+            let dots = document.getElementsByClassName("dot");
+            if (n > slides.length) {slideIndex = 1}    
+            if (n < 1) {slideIndex = slides.length}
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";  
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex-1].style.display = "block";  
+            dots[slideIndex-1].className += " active";
+        }
+
+
+        // 彈窗
+
+        document.getElementById('search').addEventListener('click', function() {
+            var popup = document.getElementById('popup');
+            popup.style.display = 'block';
+        }); 
+
+        document.getElementById('close-button').addEventListener('click', function() {
+            var popup = document.getElementById('popup');
+            popup.style.display = 'none';
+        });
+
+    </script>
+    
+    <!------------------------------------ container ----------------------------------->
+
+    <div class="container">
+            
+           
+        <div class="home_block_01">
+
+            <div class="country_photo">
+
+                <h2>熱門國家景點</h2>
+
+                <hr>
+                
+                <div id="myBtnContainer">
+                <button class="btn active" onclick="filterSelection('all')">Show all</button>
+                <button class="btn" onclick="filterSelection('taiwan')">台灣</button>
+                <button class="btn" onclick="filterSelection('japan')">日本</button>
+                <button class="btn" onclick="filterSelection('thailand')">泰國</button>
+                <button class="btn" onclick="filterSelection('europe')">歐洲</button>
+                <button class="btn" onclick="filterSelection('usa')">美國</button>
+                </div>
+                
+                <!-- Portfolio Gallery Grid -->
+                <div class="row">
+                    <div class="column taiwan">
+                        <div class="content">
+                            <img src="./imgs/taiwan_0.jpg" alt="taiwan" style="width:100%">
+                            <h4>taiwan01</h4>
+                            <p>$700 / 1人</p>
+                            <p>好看的照片</p>
+                            <button type="button"class="read_more_btn" onclick="read_more()">閱讀更多...</button>
+                            <button type="button" onclick="gogo()">加入冒險</button>
+                        </div>
+                    </div>
+                    <div class="column taiwan">
+                        <div class="content">
+                            <img src="./imgs/taiwan_1.jpg" alt="taiwan" style="width:100%">
+                            <h4>taiwan02</h4>
+                            <p>$700 / 1人</p>
+                            <p>好看的照片</p>
+                            <button type="button"class="read_more_btn" onclick="read_more()">閱讀更多...</button>
+                            <button type="button" onclick="gogo()">加入冒險</button>
+                        </div>
+                    </div>
+
+                    <div class="column taiwan">
+                        <div class="content">
+                            <img src="./imgs/taiwan_10.jpg" alt="taiwan" style="width:100%">
+                            <h4>taiwan03</h4>
+                            <p>$700 / 1人</p>
+                            <p>好看的照片</p>
+                            <button type="button"class="read_more_btn" onclick="read_more()">閱讀更多...</button>
+                            <button type="button" onclick="gogo()">加入冒險</button>
+                        </div>
+                    </div>
+
+                    <div class="column taiwan">
+                        <div class="content">
+                            <img src="./imgs/taiwan_4.jpg" alt="taiwan" style="width:100%">
+                            <h4>taiwan04</h4>
+                            <p>$600 / 1人</p>
+                            <p>好看的照片</p>
+                            <button type="button"class="read_more_btn" onclick="read_more()">閱讀更多...</button>
+                            <button type="button" onclick="gogo()">加入冒險</button>
+                        </div>
+                    </div>
+
+                    <div class="column taiwan">
+                        <div class="content">
+                            <img src="./imgs/taiwan_6.jpg" alt="taiwan" style="width:100%">
+                            <h4>taiwan05</h4>
+                            <p>$500 / 1人</p>
+                            <p>好看的照片</p>
+                            <button type="button"class="read_more_btn" onclick="read_more()">閱讀更多...</button>
+                            <button type="button" onclick="gogo()">加入冒險</button>
+                        </div>
+                    </div>
+
+                    <div class="column taiwan">
+                        <div class="content">
+                            <img src="./imgs/taiwan_7.jpg" alt="taiwan" style="width:100%">
+                            <h4>taiwan06</h4>
+                            <p>$500 / 1人</p>
+                            <p>好看的照片</p>
+                            <button type="button"class="read_more_btn" onclick="read_more()">閱讀更多...</button>
+                            <button type="button" onclick="gogo()">加入冒險</button>
+                        </div>
+                    </div>
+
+                    <div class="column taiwan">
+                        <div class="content">
+                            <img src="./imgs/taiwan_8.jpg" alt="taiwan" style="width:100%">
+                            <h4>taiwan07</h4>
+                            <p>$750 / 1人</p>
+                            <p>好看的照片</p>
+                            <button type="button"class="read_more_btn" onclick="read_more()">閱讀更多...</button>
+                            <button type="button" onclick="gogo()">加入冒險</button>
+                        </div>
+                    </div>
+
+                    
+                    <div class="column japan">
+                        <div class="content">
+                            <img src="./imgs/japan_0.jpg" alt="japan" style="width:100%">
+                            <h4>japan01</h4>
+                            <p>$1000 / 1人</p>
+                            <p>好看的照片</p>
+                            <button type="button"class="read_more_btn" onclick="read_more()">閱讀更多...</button>
+                            <button type="button" onclick="gogo()">加入冒險</button>
+                        </div>
+                    </div>
+
+                    <div class="column japan">
+                        <div class="content">
+                            <img src="./imgs/japan_10.jpg" alt="japan" style="width:100%">
+                            <h4>japan02</h4>
+                            <p>$1000 / 1人</p>
+                            <p>好看的照片</p>
+                            <button type="button"class="read_more_btn" onclick="read_more()">閱讀更多...</button>
+                            <button type="button" onclick="gogo()">加入冒險</button>
+                        </div>
+                    </div>
+
+                    <div class="column japan">
+                        <div class="content">
+                            <img src="./imgs/japan_3.jpg" alt="japan" style="width:100%">
+                            <h4>japan03</h4>
+                            <p>$1500 / 1人</p>
+                            <p>好看的照片</p>
+                            <button type="button"class="read_more_btn" onclick="read_more()">閱讀更多...</button>
+                            <button type="button" onclick="gogo()">加入冒險</button>
+                        </div>
+                    </div>
+
+                    <div class="column japan">
+                        <div class="content">
+                            <img src="./imgs/japan_5.jpg" alt="japan" style="width:100%">
+                            <h4>japan04</h4>
+                            <p>$150 / 1人</p>
+                            <p>好看的照片</p>
+                            <button type="button"class="read_more_btn" onclick="read_more()">閱讀更多...</button>
+                            <button type="button" onclick="gogo()">加入冒險</button>
+                        </div>
+                    </div>
+
+                    <div class="column japan">
+                        <div class="content">
+                            <img src="./imgs/japan_7.jpg" alt="japan" style="width:100%">
+                            <h4>japan05</h4>
+                            <p>$200 / 1人</p>
+                            <p>好看的照片</p>
+                            <button type="button"class="read_more_btn" onclick="read_more()">閱讀更多...</button>
+                            <button type="button" onclick="gogo()">加入冒險</button>
+                        </div>
+                    </div>
+
+                    <div class="column thailand">
+                        <div class="content">
+                            <img src="./imgs/thailand_0.jpg" alt="thailand" style="width:100%">
+                            <h4>thailand01</h4>
+                            <p>$300 / 1人</p>
+                            <p>好看的照片</p>
+                            <button type="button"class="read_more_btn" onclick="read_more()">閱讀更多...</button>
+                            <button type="button" onclick="gogo()">加入冒險</button>
+                        </div>
+                    </div>
+
+                    <div class="column thailand">
+                        <div class="content">
+                            <img src="./imgs/thailand_1.jpg" alt="thailand" style="width:100%">
+                            <h4>thailand02</h4>
+                            <p>$400 / 1人</p>
+                            <p>好看的照片</p>
+                            <button type="button"class="read_more_btn" onclick="read_more()">閱讀更多...</button>
+                            <button type="button" onclick="gogo()">加入冒險</button>
+                        </div>
+                    </div>
+
+                    <div class="column thailand">
+                        <div class="content">
+                            <img src="./imgs/thailand_2.jpg" alt="thailand" style="width:100%">
+                            <h4>thailand03</h4>
+                            <p>$600 / 1人</p>
+                            <p>好看的照片</p>
+                            <button type="button"class="read_more_btn" onclick="read_more()">閱讀更多...</button>
+                            <button type="button" onclick="gogo()">加入冒險</button>
+                        </div>
+                    </div>
+
+                    <div class="column thailand">
+                        <div class="content">
+                            <img src="./imgs/thailand_3.jpg" alt="thailand" style="width:100%">
+                            <h4>thailand04</h4>
+                            <p>$800 / 1人</p>
+                            <p>好看的照片</p>
+                            <button type="button"class="read_more_btn" onclick="read_more()">閱讀更多...</button>
+                            <button type="button" onclick="gogo()">加入冒險</button>
+                        </div>
+                    </div>
+
+                    <div class="column thailand">
+                        <div class="content">
+                            <img src="./imgs/thailand_4.jpg" alt="thailand" style="width:100%">
+                            <h4>thailand05</h4>
+                            <p>$900 / 1人</p>
+                            <p>好看的照片</p>
+                            <button type="button"class="read_more_btn" onclick="read_more()">閱讀更多...</button>
+                            <button type="button" onclick="gogo()">加入冒險</button>
+                        </div>
+                    </div>
+
+
+                    <div class="column europe">
+                        <div class="content">
+                            <img src="./imgs/italy_1.jpg" alt="europe" style="width:100%">
+                            <h4>europe01</h4>
+                            <p>$900 / 1人</p>
+                            <p>好看的照片</p>
+                            <button type="button"class="read_more_btn" onclick="read_more()">閱讀更多...</button>
+                            <button type="button" onclick="gogo()">加入冒險</button>
+                        </div>
+                    </div>
+
+                    <div class="column europe">
+                        <div class="content">
+                            <img src="./imgs/italy_0.jpg" alt="europe" style="width:100%">
+                            <h4>europe02</h4>
+                            <p>$800 / 1人</p>
+                            <p>好看的照片</p>
+                            <button type="button"class="read_more_btn" onclick="read_more()">閱讀更多...</button>
+                            <button type="button" onclick="gogo()">加入冒險</button>
+                        </div>
+                    </div>
+
+                    <div class="column europe">
+                        <div class="content">
+                            <img src="./imgs/italy_2.jpg" alt="europe" style="width:100%">
+                            <h4>europe03</h4>
+                            <p>$400 / 1人</p>
+                            <p>好看的照片</p>
+                            <button type="button"class="read_more_btn" onclick="read_more()">閱讀更多...</button>
+                            <button type="button" onclick="gogo()">加入冒險</button>
+                        </div>
+                    </div>
+
+                    <div class="column europe">
+                        <div class="content">
+                            <img src="./imgs/italy_3.jpg" alt="europe" style="width:100%">
+                            <h4>europe04</h4>
+                            <p>$300 / 1人</p>
+                            <p>好看的照片</p>
+                            <button type="button"class="read_more_btn" onclick="read_more()">閱讀更多...</button>
+                            <button type="button" onclick="gogo()">加入冒險</button>
+                        </div>
+                    </div>
+
+                    <div class="column europe">
+                        <div class="content">
+                            <img src="./imgs/italy_4.jpg" alt="europe" style="width:100%">
+                            <h4>europe05</h4>
+                            <p>$100 / 1人</p>
+                            <p>好看的照片</p>
+                            <button type="button"class="read_more_btn" onclick="read_more()">閱讀更多...</button>
+                            <button type="button" onclick="gogo()">加入冒險</button>
+                        </div>
+                    </div>
+
+                    <div class="column europe">
+                        <div class="content">
+                            <img src="./imgs/italy_5.jpg" alt="europe" style="width:100%">
+                            <h4>europe06</h4>
+                            <p>$200 / 1人</p>
+                            <p>好看的照片</p>
+                            <button type="button"class="read_more_btn" onclick="read_more()">閱讀更多...</button>
+                            <button type="button" onclick="gogo()">加入冒險</button>
+                        </div>
+                    </div>
+
+
+                    <div class="column usa">
+                        <div class="content">
+                            <img src="./imgs/usa_4.jpg" alt="usa" style="width:100%">
+                            <h4>usa01</h4>
+                            <p>$1500 / 1人</p>
+                            <p>好看的照片</p>
+                            <button type="button"class="read_more_btn" onclick="read_more()">閱讀更多...</button>
+                            <button type="button" onclick="gogo()">加入冒險</button>
+                        </div>
+                    </div>
+
+                    <div class="column usa">
+                        <div class="content">
+                            <img src="./imgs/usa_2.jpg" alt="usa" style="width:100%">
+                            <h4>usa02</h4>
+                            <p>$1000 / 1人</p>
+                            <p>好看的照片</p>
+                            <button type="button"class="read_more_btn" onclick="read_more()">閱讀更多...</button>
+                            <button type="button" onclick="gogo()">加入冒險</button>
+                        </div>
+                    </div>
+
+                    <div class="column usa">
+                        <div class="content">
+                            <img src="./imgs/usa_3.jpg" alt="usa" style="width:100%">
+                            <h4>usa03</h4>
+                            <p>$800 / 1人</p>
+                            <p>好看的照片</p>
+                            <button type="button"class="read_more_btn" onclick="read_more()">閱讀更多...</button>
+                            <button type="button" onclick="gogo()">加入冒險</button>
+                        </div>
+                    </div>
+
+                    <div class="column usa">
+                        <div class="content">
+                            <img src="./imgs/usa_5.jpg" alt="usa" style="width:100%">
+                            <h4>usa04</h4>
+                            <p>$900 / 1人</p>
+                            <p>好看的照片</p>
+                            <button type="button"class="read_more_btn" onclick="read_more()">閱讀更多...</button>
+                            <button type="button" onclick="gogo()">加入冒險</button>
+                        </div>
+                    </div>
+
+                    <div class="column usa">
+                        <div class="content">
+                            <img src="./imgs/usa_7.jpg" alt="usa" style="width:100%">
+                            <h4>usa05</h4>
+                            <p>$600 / 1人</p>
+                            <p>好看的照片</p>
+                            <button type="button"class="read_more_btn" onclick="read_more()">閱讀更多...</button>
+                            <button type="button" onclick="gogo()">加入冒險</button>
+                        </div>
+                        
+                    </div>
+
+                    <div class="cart-icon" data-bs-toggle="tooltip" data-bs-placement="bottom" title="冒險清單" onclick="go_services()"><i class="fa-solid fa-map-location-dot"></i></div>
+
+                    <script>
+
+                        /************************ car ******************************/
+
+
+                        function gogo() {
+                            let cartIcon = document.querySelector('.cart-icon');
+                            cartIcon.style.display = 'flex'; // 显示购物车图标
+                            cartIcon.style.width = '80px';
+                            cartIcon.style.height = '80px';
+                            cartIcon.style.fontSize = '35px'; // 图标放大的大小
+
+                            // 1.5秒后恢复原样
+                            setTimeout(() => {
+                                cartIcon.style.width = '50px';
+                                cartIcon.style.height = '50px';
+                                cartIcon.style.fontSize = ''; // 恢复默认大小
+                            }, 1500);
+
+                            
+                        }
+
+                        
+                        
+
+                    </script>
+
+                <!-- END row -->
+                </div>
+                
+            <!-- END country_photo -->
+            </div>
+
+
+
+        </div>
+
+
+        <script>
+            filterSelection("all")
+            function filterSelection(c) {
+                var x, i;
+                x = document.getElementsByClassName("column");
+                if (c == "all") c = "";
+                for (i = 0; i < x.length; i++) {
+                    w3RemoveClass(x[i], "show");
+                    if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");
+                }
+            }
+            
+            function w3AddClass(element, name) {
+                var i, arr1, arr2;
+                arr1 = element.className.split(" ");
+                arr2 = name.split(" ");
+                for (i = 0; i < arr2.length; i++) {
+                    if (arr1.indexOf(arr2[i]) == -1) {element.className += " " + arr2[i];}
+                }   
+            }
+            
+            function w3RemoveClass(element, name) {
+                var i, arr1, arr2;
+                arr1 = element.className.split(" ");
+                arr2 = name.split(" ");
+                for (i = 0; i < arr2.length; i++) {
+                    while (arr1.indexOf(arr2[i]) > -1) {
+                    arr1.splice(arr1.indexOf(arr2[i]), 1);     
+                    }
+                }
+                element.className = arr1.join(" ");
+            }
+            
+            
+            // Add active class to the current button (highlight it)
+            var btnContainer = document.getElementById("myBtnContainer");
+            var btns = btnContainer.getElementsByClassName("btn");
+            for (var i = 0; i < btns.length; i++) {
+                btns[i].addEventListener("click", function(){
+                    var current = document.getElementsByClassName("active");
+                    current[0].className = current[0].className.replace(" active", "");
+                    this.className += " active";
+                });
+            }
+        </script>
+
+        <div class="home_block_02">
+            <h2>城市探索</h2>
+            <div class="image-container">
+            <div class="image-list">
+                <!-- 20張照片 -->
+                <img src="./imgs/usa_0.jpg" alt="image1">
+                <img src="./imgs/usa_1.jpg" alt="image2">
+                <img src="./imgs/usa_2.jpg" alt="image3">
+                <img src="./imgs/usa_3.jpg" alt="image4">
+                <img src="./imgs/japan_0.jpg" alt="image5">
+                <img src="./imgs/japan_7.jpg" alt="image6">
+                <img src="./imgs/japan_8.jpg" alt="image7">
+                <img src="./imgs/japan_3.jpg" alt="image8">
+                <img src="./imgs/japan_9.jpg" alt="image9">
+                <img src="./imgs/italy_0.jpg" alt="image10">
+                <img src="./imgs/italy_1.jpg" alt="image11">
+                <img src="./imgs/italy_2.jpg" alt="image12">
+                <img src="./imgs/italy_3.jpg" alt="image13">
+                <img src="./imgs/italy_4.jpg" alt="image14">
+                <img src="./imgs/taiwan_0.jpg" alt="image15">
+                <img src="./imgs/taiwan_1.jpg" alt="image16">
+                <img src="./imgs/taiwan_2.jpg" alt="image17">
+                <img src="./imgs/taiwan_3.jpg" alt="image18">
+                <img src="./imgs/taiwan_4.jpg" alt="image19">
+                <img src="./imgs/taiwan_5.jpg" alt="image20">
+            </div>
+            <button class="prev-btn" style="display: none;">〈</button>
+            <button class="next-btn">〉</button>
+            </div>
+
+            <h2>美食之旅</h2>
+            <div class="image-container">
+            <div class="image-list">
+                <!-- 20張照片 -->
+                <img src="./imgs/food_01.jpg" alt="image1">
+                <img src="./imgs/food_02.jpg" alt="image2">
+                <img src="./imgs/food_03.jpg" alt="image3">
+                <img src="./imgs/food_04.jpg" alt="image4">
+                <img src="./imgs/food_05.jpg" alt="image5">
+                <img src="./imgs/food_06.jpg" alt="image6">
+                <img src="./imgs/food_07.jpg" alt="image7">
+                <img src="./imgs/food_08.jpg" alt="image8">
+                <img src="./imgs/food_09.jpg" alt="image9">
+                <img src="./imgs/food_10.jpg" alt="image10">
+                <img src="./imgs/food_11.jpg" alt="image11">
+                <img src="./imgs/food_12.jpg" alt="image12">
+                <img src="https://dummyimage.com/300x200/000/fff.jpg" alt="image13">
+                <img src="https://dummyimage.com/300x200/000/fff.jpg" alt="image14">
+                <img src="https://dummyimage.com/300x200/000/fff.jpg" alt="image15">
+                <img src="https://dummyimage.com/300x200/000/fff.jpg" alt="image16">
+                <img src="https://dummyimage.com/300x200/000/fff.jpg" alt="image17">
+                <img src="https://dummyimage.com/300x200/000/fff.jpg" alt="image18">
+                <img src="https://dummyimage.com/300x200/000/fff.jpg" alt="image19">
+                <img src="https://dummyimage.com/300x200/000/fff.jpg" alt="image20">
+            </div>
+            <button class="prev-btn" style="display: none;">〈</button>
+            <button class="next-btn">〉</button>
+            </div>
+
+            <h2>戶外探險</h2>
+            <div class="image-container">
+            <div class="image-list">
+                <!-- 20張照片 -->
+                <img src="./imgs/camping_01.jpg" alt="image1">
+                <img src="./imgs/camping_02.jpg" alt="image2">
+                <img src="./imgs/camping_03.jpg" alt="image3">
+                <img src="./imgs/camping_04.jpg" alt="image4">
+                <img src="./imgs/camping_05.jpg" alt="image5">
+                <img src="./imgs/fishing_01.jpg" alt="image6">
+                <img src="./imgs/fishing_02.jpg" alt="image7">
+                <img src="./imgs/fishing_03.jpg" alt="image8">
+                <img src="./imgs/fishing_04.jpg" alt="image9">
+                <img src="./imgs/fishing_05.jpg" alt="image10">
+                <img src="./imgs/hiking_01.jpg" alt="image11">
+                <img src="./imgs/hiking_02.jpg" alt="image12">
+                <img src="./imgs/hiking_03.jpg" alt="image13">
+                <img src="./imgs/hiking_04.jpg" alt="image14">
+                <img src="./imgs/hiking_05.jpg" alt="image15">
+                <img src="./imgs/ski_01.jpg" alt="image16">
+                <img src="./imgs/ski_02.jpg" alt="image17">
+                <img src="./imgs/ski_03.jpg" alt="image18">
+                <img src="./imgs/ski_04.jpg" alt="image19">
+                <img src="./imgs/ski_05.jpg" alt="image20">
+            </div>
+            <button class="prev-btn" style="display: none;">〈</button>
+            <button class="next-btn">〉</button>
+            </div>
+
+            <h2>文化體驗</h2>
+            <div class="image-container">
+            <div class="image-list">
+                <!-- 20張照片 -->
+                <img src="https://dummyimage.com/300x200/000/fff.jpg" alt="image1">
+                <img src="https://dummyimage.com/300x200/000/fff.jpg" alt="image2">
+                <img src="https://dummyimage.com/300x200/000/fff.jpg" alt="image3">
+                <img src="https://dummyimage.com/300x200/000/fff.jpg" alt="image4">
+                <img src="https://dummyimage.com/300x200/000/fff.jpg" alt="image5">
+                <img src="https://dummyimage.com/300x200/000/fff.jpg" alt="image6">
+                <img src="https://dummyimage.com/300x200/000/fff.jpg" alt="image7">
+                <img src="https://dummyimage.com/300x200/000/fff.jpg" alt="image8">
+                <img src="https://dummyimage.com/300x200/000/fff.jpg" alt="image9">
+                <img src="https://dummyimage.com/300x200/000/fff.jpg" alt="image10">
+                <img src="https://dummyimage.com/300x200/000/fff.jpg" alt="image11">
+                <img src="https://dummyimage.com/300x200/000/fff.jpg" alt="image12">
+                <img src="https://dummyimage.com/300x200/000/fff.jpg" alt="image13">
+                <img src="https://dummyimage.com/300x200/000/fff.jpg" alt="image14">
+                <img src="https://dummyimage.com/300x200/000/fff.jpg" alt="image15">
+                <img src="https://dummyimage.com/300x200/000/fff.jpg" alt="image16">
+                <img src="https://dummyimage.com/300x200/000/fff.jpg" alt="image17">
+                <img src="https://dummyimage.com/300x200/000/fff.jpg" alt="image18">
+                <img src="https://dummyimage.com/300x200/000/fff.jpg" alt="image19">
+                <img src="https://dummyimage.com/300x200/000/fff.jpg" alt="image20">
+            </div>
+            <button class="prev-btn" style="display: none;">〈</button>
+            <button class="next-btn">〉</button>
+            </div>
+        </div>
+
+        <script>
+            // JavaScript
+            const imageLists = document.querySelectorAll('.image-list');
+            const prevBtns = document.querySelectorAll('.prev-btn');
+            const nextBtns = document.querySelectorAll('.next-btn');
+
+            imageLists.forEach((imageList, index) => {
+            let currentIndex = 0;
+
+            prevBtns[index].addEventListener('click', () => {
+                currentIndex -= 4;
+                imageList.style.transform = `translateX(-${currentIndex * 220}px)`;
+                nextBtns[index].style.display = 'block';
+                if (currentIndex <= 0) {
+                prevBtns[index].style.display = 'none';
+                }
+            });
+
+            nextBtns[index].addEventListener('click', () => {
+                currentIndex += 4;
+                imageList.style.transform = `translateX(-${currentIndex * 220}px)`;
+                prevBtns[index].style.display = 'block';
+                if (currentIndex >= 16) {
+                nextBtns[index].style.display = 'none';
+                }
+            });
+            });
+        </script>
+
+
+
+
+    </div>
+
+
+        <!------------------------------------- footer  --------------------------------------->
+    <footer>
+
+            <div class="social_media">
+                <h3>社交媒體</h3>
+                <div class="social-icon">
+                    <!-- 錨點anchor ID  -->
+                    <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-discord"></i></a>
+                    <a href="#"><i class="fa-brands fa-line"></i></a>
+                    <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                </div>
+            </div>
+
+            <div class="sitemap">
+                <h3>網站導覽</h3>
+                <nav>
+                    <ul>
+                        <li><a href="./home.html" class="link">HOME</a></li>
+                        <li><a href="./blog.html" class="link">BLOG</a></li>
+                        <li><a href="./services.html" class="link">SERVICES</a></li>
+                        <li><a href="./about.html" class="link">ABOUT</a></li>
+                    </ul>
+                </nav>
+            </div>
+
+            <div class="hot_place">
+                <h3>熱門行程</h3>
+                <nav>
+                    <ul>
+                        <li><a href="#" class="link">東京迪士尼</a></li>
+                        <li><a href="#" class="link">澎湖花火節</a></li>
+                        <li><a href="#" class="link">英國倫敦溫莎城堡</a></li>
+                        <li><a href="#" class="link">加拿大尼加拉大瀑布</a></li>
+                        <li><a href="#" class="link">美國大峽谷</a></li>
+                        <li><a href="#" class="link">法國巴黎鐵塔</a></li>
+                        <li><a href="#" class="link">中國長城</a></li>
+                        <li><a href="#" class="link">台北101大樓</a></li>
+                    </ul>
+                </nav>
+            </div>
+
+            
+            
+            <div class="information">
+                <h3>公司信息</h3>
+                <div>
+                    <p>
+                        Travel_Club 總部位於 XXXX,我們擁有豐富的產業經驗和廣泛的合作夥伴網絡。您可以透過以下方式與我們取得聯繫:<br>
+                        電話: XXXX-XXXX-XXXX<br>
+                        信箱: service@travelclub.com<br>
+                        地址: XXXX市XXXX區XXXX路XXX號<br>
+                    </p>
+                </div>
+            </div>
+    
+    
+            <div class="subscription">
+                <h3>訂閱/反饋</h3>
+                <div>
+                    <p>
+                        訂閱 Travel_Club 資訊<br>
+                        如果您想第一時間了解 Travel_Club 最新的旅遊線路、活動資訊和會員福利,歡迎訂閱我們的電子郵件通訊。
+                        只需在下方輸入您的電子郵件地址,即可免費訂閱。<br>
+                    </p>
+                    <form action="start_subscription" method="post">
+                        <input type="email" name="email" placeholder="Email" required>
+                        <button type="submit">確認訂閱</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="copyright">
+                <h3>版權申明</h3>
+                <div>  
+                    <p>
+                        © 2024 Travel_Club. 保留所有權利。<br>
+                        本網站上的所有內容,包括但不限於文字、圖片、圖示、影片、音訊等,均由 Travel_Club 擁有版權。
+                        未經 Travel_Club 事先書面許可,任何個人和組織不得以任何形式對本網站的任何部分進行複製、修改、傳播、出售或其他方式使用。
+                        Travel_Club 保留隨時更改本網站內容的權利,恕不另行通知。如您發現任何侵權行為,請立即與我們聯絡。
+                    </p>
+                </div>
+            </div>
+            
+    
+            
+    </footer>
+
+</body>
+</html>

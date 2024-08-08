@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'><meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="h_f_.css">
+        <title>Travel_Club About</title>
+</head>
+<body>
+    
+    <!----------------------------- header ---------------------------------->
+        
+    <header>
+        <nav class="nav">
+            <div class="nav-logo">
+                <p>Travel_Club</p>
+            </div>
+            <div class="nav-menu" id="navMenu">
+                <ul>
+                    <li><a href="./home.html" class="link">HOME</a></li>
+                    <li><a href="./blog.html" class="link">BLOG</a></li>
+                    <li><a href="./services.html" class="link">SERVICES</a></li>
+                    <li><a href="./about.html" class="link">ABOUT</a></li>
+                </ul>
+            </div>
+            <div class="nav-button">
+                <button class="btn white-btn" id="loginBtn" onclick="login()">Sign In</button>
+                <button class="btn" id="registerBtn" onclick="register()">Sign Up</button>
+            </div>
+        </nav>
+    </header>
+
+    <script>
+        function login() {
+            window.location.href = './login.html';
+        }
+
+        function register() {
+            window.location.href = './login.html';
+        }
+
+    </script>
+
+    <!------------------------------------- services ------------------------------------------>
+
+
+    <div class="container">
+        <div class="service_block_02">
+            <div><h3>冒險清單</h3></div>
+            <div class="product-list">
+                <div class="product-row">
+                  <div class="product-name">商品名稱1</div>
+                  <div class="product-price">$10.00</div>
+                  <div class="product-quantity">
+                    <button class="quantity-btn decrease">-</button>
+                    <div class="quantity-value">0</div>
+                    <button class="quantity-btn increase">+</button>
+                  </div>
+                <div class="product-delete">刪除</div>
+                </div>
+                <div class="product-row">
+                    <div class="product-name">商品名稱2</div>
+                    <div class="product-price">$10.00</div>
+                    <div class="product-quantity">
+                      <button class="quantity-btn decrease">-</button>
+                      <div class="quantity-value">0</div>
+                      <button class="quantity-btn increase">+</button>
+                    </div>
+                    <div class="product-delete">刪除</div>
+                </div>
+                <div class="product-row">
+                    <div class="product-name">商品名稱3</div>
+                    <div class="product-price">$10.00</div>
+                    <div class="product-quantity">
+                      <button class="quantity-btn decrease">-</button>
+                      <div class="quantity-value">0</div>
+                      <button class="quantity-btn increase">+</button>
+                    </div>
+                    <div class="product-delete">刪除</div>
+                </div>
+                <div class="product-row">
+                    <div class="product-name">商品名稱4</div>
+                    <div class="product-price">$10.00</div>
+                    <div class="product-quantity">
+                      <button class="quantity-btn decrease">-</button>
+                      <div class="quantity-value">0</div>
+                      <button class="quantity-btn increase">+</button>
+                    </div>
+                    <div class="product-delete">刪除</div>
+                </div>
+
+
+            </div>
+
+        </div>
+
+        <script>
+            const productRows = document.querySelectorAll('.product-row');
+            const quantityBtns = document.querySelectorAll('.quantity-btn');
+            let quantities = document.querySelectorAll('.quantity-value');
+
+
+            quantityBtns.forEach((btn) => {
+            btn.addEventListener('click', () => {
+                const productRow = btn.parentNode.parentNode; // get the parent.product-row element
+                const quantityValue = productRow.querySelector('.quantity-value'); // get the corresponding.quantity-value element
+                const currentQuantity = parseInt(quantityValue.textContent);
+                if (btn.classList.contains('increase')) {
+                quantityValue.textContent = currentQuantity + 1;
+                } else if (btn.classList.contains('decrease') && currentQuantity > 0) {
+                quantityValue.textContent = currentQuantity - 1;
+                }
+            });
+            });
+
+            const deleteBtns = document.querySelectorAll('.product-delete');
+            deleteBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                btn.closest('.product-row').remove();
+            });
+            });
+        </script>
+
+
+        <div class="service_block_01">
+            <div class="service_block_01_select">
+                <div class="accordion-item">
+                    <button class="accordion-btn" data-target="select_thing01">必備物資</button>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-btn" data-target="select_thing02">代辦事項</button>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-btn" data-target="select_thing03">物資補給</button>
+                </div>
+            </div>
+
+            <div class="service_block_01_selectlist">
+                <div class="select_thing01" style="display: block;">
+                    <h3>必備物資</h3>
+                    <hr>
+                    <div class="wrap">
+                        <table>
+                            <tr>
+                                <th scope="row">衣物</th>
+                                <td>
+                                    <input type="checkbox" id="item_001" name="item_001" onchange="toggleLabelStrike('item_001')" />
+                                    <label for="item_001" id="label_item_001">內衣褲</label>
+                                </td>
+                                <td>
+                                    <input type="checkbox" id="item_002" name="item_002" onchange="toggleLabelStrike('item_002')" />
+                                    <label for="item_002" id="label_item_002">拖鞋、涼鞋</label>
+                                </td>
+                                <td>
+                                    <input type="checkbox" id="item_003" name="item_003" onchange="toggleLabelStrike('item_003')" />
+                                    <label for="item_003" id="label_item_003">褲子</label>
+                                </td>
+                                <td>
+                                    <input type="checkbox" id="item_004" name="item_004" onchange="toggleLabelStrike('item_004')" />
+                                    <label for="item_004" id="label_item_004">衣服</label>
+                                </td>
+                                <td>
+                                    <input type="checkbox" id="item_005" name="item_005" onchange="toggleLabelStrike('item_005')" />
+                                    <label for="item_005" id="label_item_005">外套</label>
+                                </td>
+                                <td>
+                                    <input type="checkbox" id="item_006" name="item_006" onchange="toggleLabelStrike('item_006')" />
+                                    <label for="item_006" id="label_item_006">雨衣</label>
+                                </td>
+                                <td>
+                                    <input type="checkbox" id="item_007" name="item_007" onchange="toggleLabelStrike('item_007')" />
+                                    <label for="item_007" id="label_item_007">眼鏡、太陽眼鏡</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">日常生活</th>
+                                <td>
+                                    <input type="checkbox" id="item_008" name="item_008" onchange="toggleLabelStrike('item_008')" />
+                                    <label for="item_008" id="label_item_008">牙刷、牙膏、牙線</label>
+                                </td>
+                                <td>
+                                    <input type="checkbox" id="item_009" name="item_009" onchange="toggleLabelStrike('item_009')" />
+                                    <label for="item_009" id="label_item_009">眼藥水</label>
+                                </td>
+                                <td>
+                                    <input type="checkbox" id="item_010" name="item_010" onchange="toggleLabelStrike('item_010')" />
+                                    <label for="item_010" id="label_item_010">卸妝油</label>
+                                </td>
+                                <td>
+                                    <input type="checkbox" id="item_011" name="item_011" onchange="toggleLabelStrike('item_011')" />
+                                    <label for="item_011" id="label_item_011">梳子</label>
+                                </td>
+                                <td>
+                                    <input type="checkbox" id="item_012" name="item_012" onchange="toggleLabelStrike('item_012')" />
+                                    <label for="item_012" id="label_item_012">梳防曬子</label>
+                                </td>
+                                <td>
+                                    <input type="checkbox" id="item_013" name="item_013" onchange="toggleLabelStrike('item_013')" />
+                                    <label for="item_013" id="label_item_013">化妝、保養用品</label>
+                                </td>
+                                <td>
+                                    <input type="checkbox" id="item_014" name="item_014" onchange="toggleLabelStrike('item_014')" />
+                                    <label for="item_014" id="label_item_014">衛生紙</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row" rowspan="3">旅行必備</th>
+                                <td>
+                                    <input type="checkbox" id="item_015" name="item_015" onchange="toggleLabelStrike('item_015')" />
+                                    <label for="item_015" id="label_item_015">耳塞</label>
+                                </td>
+                                <td>
+                                    <input type="checkbox" id="item_016" name="item_016" onchange="toggleLabelStrike('item_016')" />
+                                    <label for="item_016" id="label_item_016">眼罩</label>
+                                </td>
+                                <td>
+                                    <input type="checkbox" id="item_017" name="item_017" onchange="toggleLabelStrike('item_017')" />
+                                    <label for="item_017" id="label_item_017">旅行枕和毛毯</label>
+                                </td>
+                                <td>
+                                    <input type="checkbox" id="item_018" name="item_018" onchange="toggleLabelStrike('item_018')" />
+                                    <label for="item_018" id="label_item_018">旅行日程表</label>
+                                </td>
+                                <td>
+                                    <input type="checkbox" id="item_019" name="item_019" onchange="toggleLabelStrike('item_019')" />
+                                    <label for="item_019" id="label_item_019">緊急連絡人資訊</label>
+                                </td>
+                                <td>
+                                    <input type="checkbox" id="item_020" name="item_020" onchange="toggleLabelStrike('item_020')" />
+                                    <label for="item_020" id="label_item_020">醫療保險卡</label>
+                                </td>
+                                <td>
+                                    <input type="checkbox" id="item_021" name="item_021" onchange="toggleLabelStrike('item_021')" />
+                                    <label for="item_021" id="label_item_021">藥物清單</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="checkbox" id="item_022" name="item_022" onchange="toggleLabelStrike('item_022')" />
+                                    <label for="item_022" id="label_item_022">雨傘</label>
+                                </td>
+                                <td>
+                                    <input type="checkbox" id="item_023" name="item_023" onchange="toggleLabelStrike('item_023')" />
+                                    <label for="item_023" id="label_item_023">家用鑰匙</label>
+                                </td>
+                                <td>
+                                    <input type="checkbox" id="item_024" name="item_024" onchange="toggleLabelStrike('item_024')" />
+                                    <label for="item_024" id="label_item_024">皮夾</label>
+                                </td>
+                                <td>
+                                    <input type="checkbox" id="item_025" name="item_025" onchange="toggleLabelStrike('item_025')" />
+                                    <label for="item_025" id="label_item_025">信用卡</label>
+                                </td>
+                                <td>
+                                    <input type="checkbox" id="item_026" name="item_026" onchange="toggleLabelStrike('item_026')" />
+                                    <label for="item_026" id="label_item_026">背包</label>
+                                </td>
+                                <td>
+                                    <input type="checkbox" id="item_027" name="item_027" onchange="toggleLabelStrike('item_027')" />
+                                    <label for="item_027" id="label_item_027">零錢包</label>
+                                </td>
+                                <td>
+                                    <input type="checkbox" id="item_028" name="item_028" onchange="toggleLabelStrike('item_028')" />
+                                    <label for="item_028" id="label_item_028">針線包</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="checkbox" id="item_029" name="item_029" onchange="toggleLabelStrike('item_029')" />
+                                    <label for="item_029" id="label_item_029">手機及充電器</label>
+                                </td>
+                                <td>
+                                    <input type="checkbox" id="item_030" name="item_030" onchange="toggleLabelStrike('item_030')" />
+                                    <label for="item_030" id="label_item_030">筆記型電腦及充電器</label>
+                                </td>
+                                <td>
+                                    <input type="checkbox" id="item_031" name="item_031" onchange="toggleLabelStrike('item_031')" />
+                                    <label for="item_031" id="label_item_031">行動電源</label>
+                                </td>
+                                <td>
+                                    <input type="checkbox" id="item_032" name="item_032" onchange="toggleLabelStrike('item_032')" />
+                                    <label for="item_032" id="label_item_032">上網SIM卡</label>
+                                </td>
+                                <td>
+                                    <input type="checkbox" id="item_033" name="item_033" onchange="toggleLabelStrike('item_033')" />
+                                    <label for="item_033" id="label_item_033">耳機</label>
+                                </td>
+                                <td>
+                                    <input type="checkbox" id="item_034" name="item_034" onchange="toggleLabelStrike('item_034')" />
+                                    <label for="item_034" id="label_item_034">通訊錄</label>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="select_thing02" style="display: none;">
+                    <h3>代辦事項</h3>
+                    <hr>
+                    <div class="wrap">
+                        <table>
+                            <tr>
+                                <th scope="row">緊急</th>
+                                <td>
+                                    <input type="checkbox" id="item_035" name="item_035" onchange="toggleLabelStrike('item_035')" />
+                                    <label for="item_035" id="label_item_035">換國際駕照</label>
+                                </td>
+                                <td>
+                                    <input type="checkbox" id="item_036" name="item_036" onchange="toggleLabelStrike('item_036')" />
+                                    <label for="item_036" id="label_item_036">租車</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">不緊急</th>
+                                <td>
+                                    <input type="checkbox" id="item_037" name="item_037" onchange="toggleLabelStrike('item_037')" />
+                                    <label for="item_037" id="label_item_037">買東西</label>
+                                </td>
+                                <td>
+                                    <input type="checkbox" id="item_038" name="item_038" onchange="toggleLabelStrike('item_038')" />
+                                    <label for="item_038" id="label_item_038">兌換錢</label>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="select_thing03" style="display: none;">
+                    <h3>物資補給</h3>
+                    <hr>
+                    <div class="wrap">
+                        <table>
+                            <tr>
+                                <th scope="row">吃的</th>
+                                <td>
+                                    <input type="checkbox" id="item_039" name="item_039" onchange="toggleLabelStrike('item_039')" />
+                                    <label for="item_039" id="label_item_039">巧克力</label>
+                                </td>
+                                <td>
+                                    <input type="checkbox" id="item_040" name="item_040" onchange="toggleLabelStrike('item_040')" />
+                                    <label for="item_040" id="label_item_040">樂事</label>
+                                <td>
+                                    <input type="checkbox" id="item_041" name="item_041" onchange="toggleLabelStrike('item_041')" />
+                                    <label for="item_041" id="label_item_041">鳳梨酥</label>
+                                </td>
+                                <td>
+                                    <input type="checkbox" id="item_042" name="item_042" onchange="toggleLabelStrike('item_042')" />
+                                    <label for="item_042" id="label_item_042">軟糖</label>
+                                </td>
+                                <td>
+                                    <input type="checkbox" id="item_043" name="item_043" onchange="toggleLabelStrike('item_043')" />
+                                    <label for="item_043" id="label_item_043">喉糖</label>
+                                </td>
+                                
+                        
+                            </tr>
+                
+                            <tr>
+                                <th scope="row">用的</th>
+                                <td>
+                                    <input type="checkbox" id="item_044" name="item_044" onchange="toggleLabelStrike('item_044')" />
+                                    <label for="item_044" id="label_item_044">長袖</label>
+                                </td>
+                                <td>
+                                    <input type="checkbox" id="item_045" name="item_045" onchange="toggleLabelStrike('item_045')" />
+                                    <label for="item_045" id="label_item_045">拖鞋</label>
+                                </td>
+                                <td>
+                                    <input type="checkbox" id="item_046" name="item_046" onchange="toggleLabelStrike('item_046')" />
+                                    <label for="item_046" id="label_item_046">蛙鏡</label>
+                                </td>
+                                <td>
+                                    <input type="checkbox" id="item_047" name="item_046" onchange="toggleLabelStrike('item_047')" />
+                                    <label for="item_047" id="label_item_047">環保杯</label>
+                                </td>
+                                
+                            </tr>
+
+                            <tr>
+                                <th scope="row">藥品</th>
+                                <td>
+                                    <input type="checkbox" id="item_048" name="item_048" onchange="toggleLabelStrike('item_048')" />
+                                    <label for="item_048" id="label_item_048">環保杯</label>
+                                </td>
+                                <td>
+                                    <input type="checkbox" id="item_049" name="item_049" onchange="toggleLabelStrike('item_049')" />
+                                    <label for="item_049" id="label_item_049">環保杯</label>
+                                </td>
+                            </tr>
+
+                        </table>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <script>
+                function toggleLabelStrike(checkboxId) {
+                    var checkbox = document.getElementById(checkboxId);
+                    var label = document.getElementById("label_" + checkboxId);
+                
+                    if (checkbox.checked) {
+                        label.classList.add("strike");
+                    } else {
+                        label.classList.remove("strike");
+                    }
+                }
+            </script>
+        </div>
+
+        <script>
+            // 選取所有手風琴按鈕
+            const accordionBtns = document.querySelectorAll('.accordion-btn');
+
+            // 對每個按鈕添加點擊事件監聽器
+            accordionBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // 取得目標元素的 ID
+                    const targetId = btn.getAttribute('data-target');
+                    // 取得目標元素
+                    const targetElement = document.querySelector(`.${targetId}`);
+                    // 將所有 select_thing 隱藏
+                    const selectThings = document.querySelectorAll('.service_block_01_selectlist > div');
+                    selectThings.forEach(item => {
+                        // 直接使用 sytle ，隱藏所有 select_thing
+                        item.style.display = 'none';
+                    });
+                    // 直接使用 sytle ，顯示目標元素
+                    targetElement.style.display = 'block';
+                });
+            });
+        </script>
+
+        
+    </div>
+
+
+    <!------------------------------- footer start ------------------------------->
+    <footer>
+
+        <div class="social_media">
+            <h3>社交媒體</h3>
+            <div class="social-icon">
+                <!-- 錨點anchor ID  -->
+                <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#"><i class="fa-brands fa-discord"></i></a>
+                <a href="#"><i class="fa-brands fa-line"></i></a>
+                <a href="#"><i class="fa-brands fa-twitter"></i></a>
+            </div>
+        </div>
+
+        <div class="sitemap">
+            <h3>網站導覽</h3>
+            <nav>
+                <ul>
+                    <li><a href="./home.html" class="link">HOME</a></li>
+                    <li><a href="./blog.html" class="link">BLOG</a></li>
+                    <li><a href="./services.html" class="link">SERVICES</a></li>
+                    <li><a href="./about.html" class="link">ABOUT</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="hot_place">
+            <h3>熱門行程</h3>
+            <nav>
+                <ul>
+                    <li><a href="#" class="link">東京迪士尼</a></li>
+                    <li><a href="#" class="link">澎湖花火節</a></li>
+                    <li><a href="#" class="link">英國倫敦溫莎城堡</a></li>
+                    <li><a href="#" class="link">加拿大尼加拉大瀑布</a></li>
+                    <li><a href="#" class="link">美國大峽谷</a></li>
+                    <li><a href="#" class="link">法國巴黎鐵塔</a></li>
+                    <li><a href="#" class="link">中國長城</a></li>
+                    <li><a href="#" class="link">台北101大樓</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        
+        
+        <div class="information">
+            <h3>公司信息</h3>
+            <div>
+                <p>
+                    Travel_Club 總部位於 XXXX,我們擁有豐富的產業經驗和廣泛的合作夥伴網絡。您可以透過以下方式與我們取得聯繫:<br>
+                    電話: XXXX-XXXX-XXXX<br>
+                    信箱: service@travelclub.com<br>
+                    地址: XXXX市XXXX區XXXX路XXX號<br>
+                </p>
+            </div>
+        </div>
+
+
+        <div class="subscription">
+            <h3>訂閱/反饋</h3>
+            <div>
+                <p>
+                    訂閱 Travel_Club 資訊<br>
+                    如果您想第一時間了解 Travel_Club 最新的旅遊線路、活動資訊和會員福利,歡迎訂閱我們的電子郵件通訊。
+                    只需在下方輸入您的電子郵件地址,即可免費訂閱。<br>
+                </p>
+                <form action="start_subscription" method="post">
+                    <input type="email" name="email" placeholder="Email" required>
+                    <button type="submit">確認訂閱</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="copyright">
+            <h3>版權申明</h3>
+            <div>  
+                <p>
+                    © 2024 Travel_Club. 保留所有權利。<br>
+                    本網站上的所有內容,包括但不限於文字、圖片、圖示、影片、音訊等,均由 Travel_Club 擁有版權。
+                    未經 Travel_Club 事先書面許可,任何個人和組織不得以任何形式對本網站的任何部分進行複製、修改、傳播、出售或其他方式使用。
+                    Travel_Club 保留隨時更改本網站內容的權利,恕不另行通知。如您發現任何侵權行為,請立即與我們聯絡。
+                </p>
+            </div>
+        </div>
+        
+
+        
+    </footer>
+    <!-- footer end -->
+
+</body>
+</html>
+
+
+
+
+</body>
+</html>
